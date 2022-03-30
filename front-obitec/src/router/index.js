@@ -6,17 +6,17 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/new_user',
-    name: 'New User',
+    name: 'NewUser',
     component: () => import('../components/new_user/NewUser.vue'),
   },
   {
     path: '/edit_user/:id',
-    name: 'Edit User',
+    name: 'Edit-User',
     component: () => import('../components/edit_user/EditUser.vue'),
   },
   {
     path: '/list_users',
-    name: 'List Users',
+    name: 'Listpage',
     component: () => import('../components/list_users/ListUsers.vue'),
   },
   {

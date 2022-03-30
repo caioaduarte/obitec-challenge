@@ -49,7 +49,8 @@
             E-mail is required.</div>
           </div>
           <br />
-          <button type="submit" class="btn btn-primary">Add New User</button>
+          <!-- https://br.vuejs.org/v2/guide/events.html -->
+          <button type="submit" class="btn btn-primary" @click="addNewUser">Add New User</button>
         </form>
       </div>
     </div>
@@ -58,7 +59,8 @@
 
 <script>
 
-import { required, minLength, between } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
+import userService from '../../services/userService';
 
 export default {
   name: 'NewUser',
@@ -85,8 +87,15 @@ export default {
 
       this.$v.$touch();
       if (this.$v.$invalid) {
-
+        this.$swal('Warning', 'Please complete all fields', 'error');
       }
+    },
+    async addNewUser() {
+      await userService.NewUser(this.user);
+      // Push to the UsersList page
+      this.$router.push({
+        name: 'List-Users',
+      });
     },
   },
 };
