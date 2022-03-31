@@ -14,20 +14,20 @@
     </thead>
   </table>
       <tbody>
-        <tr v-for="person in users" :key="person._id">
-          <td>{{ person.uuid }}</td>
-          <td>{{ person.name }}</td>
-          <td>{{ person.email }}</td>
+        <tr v-for="item in users" v-bind:key="person.uuid">
+          <td>{{ item.uuid }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.email }}</td>
           <td>
-            <!-- <router-link :to="{ name: 'Edit-User', params: { id: person._uuid } }"
+            <router-link :to="{ name: 'Edit-User', params: { id: item.uuid } }"
               class="btn btn-success">
               <font-awesome-icon :icon="['fas', 'edit']" />
-            </router-link> -->
+            </router-link>
           </td>
           <td>
-            <!-- <button @click="deleteUser(person._uuid) "class="btn btn-danger">
+            <button @click="deleteUser(item.uuid) "class="btn btn-danger">
               <font-awesome-icon :icon="['fas', 'trash']" />
-            </button> -->
+            </button>
           </td>
         </tr>
       </tbody>
@@ -39,16 +39,19 @@
 import userService from '../../services/userService';
 
 export default {
-  name: 'Listpage',
+  name: 'ListPage',
   data() {
     return {
       users: [],
 
     };
   },
+
+  // mounted() is called after DOM has been mounted
+  // so you can access the reactive component, templates, and DOM elements and manipulate them.
   mounted() {
     this.listAllUsers();
-    console.log('Cheguei 123');
+    console.log('Cheguei 111');
   },
   methods: {
     async listAllUsers() {
@@ -56,7 +59,6 @@ export default {
       console.log(response);
       console.log('Cheguei aqui');
       this.users = response;
-      
     },
   },
 };

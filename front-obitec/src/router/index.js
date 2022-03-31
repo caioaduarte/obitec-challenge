@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: '/list_users',
-    name: 'Listpage',
+    name: 'ListPage',
     component: () => import('../components/list_users/ListUsers.vue'),
   },
   {

@@ -5,8 +5,7 @@ export default {
   async listUsers() {
     try {
       const response = await api().get('/user');
-      return response.data
-      
+      return response.data;
     } catch (error) {
       return console.log(error);
     }
