@@ -51,13 +51,10 @@ export default {
   // so you can access the reactive component, templates, and DOM elements and manipulate them.
   mounted() {
     this.listAllUsers();
-    console.log('Cheguei 111');
   },
   methods: {
     async listAllUsers() {
       const response = await userService.listUsers();
-      console.log(response);
-      console.log('Cheguei aqui');
       this.users = response;
     },
   },

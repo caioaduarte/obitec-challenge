@@ -1,15 +1,15 @@
 const db = require ('../config/database');
 
 exports.newUser = async(req, res) => {
-  console.log("chegou aqui")
   
+  try {
   const { uuid, name, email } = req.body;
-  console.log( uuid, name, email)
-  console.log(req.body)
   const { rows } = await db.query(
     "insert into obitec (uuid, name, email) values ($1, $2, $3)",
-    [uuid, name, email]
-  );
+    [uuid, name, email]);
+  } catch (error) {
+    return console.log(error);
+  };
   
 
   res.status(201).send({
